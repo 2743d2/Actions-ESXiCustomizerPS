@@ -22,9 +22,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - shell: pwsh
-        run: choco install vmware-powercli-psmodule
-
       - name: Config VMware.PowerCLI
         shell: pwsh
         run: |
