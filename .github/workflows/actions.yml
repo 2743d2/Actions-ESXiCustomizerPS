@@ -21,16 +21,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Install VMware.PowerCLI
+      - name: Install and Config VMware.PowerCLI
         shell: pwsh
         run: |
-          Set-ExecutionPolicy RemoteSigned
+          $ConfigFile = "${{ github.workspace }}\config.ps1"
+          powershell.exe -ExecutionPolicy Bypass $ConfigFile
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module VMware.PowerCLI -Scope AllUsers
-
-      - name: Config VMware.PowerCLI
-        shell: pwsh
-        run: |
           Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 
       - name: Clone ECP Source Code
@@ -44,7 +41,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           cd ECP
-          $PSfile = "${{ github.workspace }}/Script.ps1"
+          $PSfile = "${{ github.workspace }}\Script.ps1"
           $PSfile
           echo "::set-output name=status::success"
 
