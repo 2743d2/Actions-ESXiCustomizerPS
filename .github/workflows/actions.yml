@@ -57,8 +57,8 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           cd ECP
-          rm -rf docs
-          rm -rf ESXi-Customizer-PS.ps1
+          rm docs -r -fo
+          rm ESXi-Customizer-PS.ps1 -r -fo
           echo "ISO_FILE=$PWD" >> $GITHUB_ENV
           echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
