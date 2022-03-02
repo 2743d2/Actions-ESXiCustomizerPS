@@ -25,19 +25,21 @@ jobs:
       - name: Config VMware.PowerCLI
         shell: pwsh
         run: |
-          $ConfigFile = "${{ github.workspace }}/config.ps1"
-          powershell.exe -ExecutionPolicy Bypass $ConfigFile
-          Get-ExecutionPolicy -List
+          Set-ExecutionPolicy Unrestricted -force
           Set-PSRepository PSGallery -InstallationPolicy Trusted
-          Install-Module -Name VMware.PowerCLI -Scope CurrentUser
-          Get-ExecutionPolicy -List
+          Install-Module -Name VMware.PowerCLI
           Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
+
+
+        # $ConfigFile = "${{ github.workspace }}/config.ps1"
+        # powershell.exe -ExecutionPolicy Bypass $ConfigFile
+
 
       - name: Clone ECP Source Code
         shell: pwsh
         run: |
           cd ${{ github.workspace }}
-          git clone $ECP_REPO_URL -b $ECP_REPO_BRANCH ECP
+          git clone ${{ env.ECP_REPO_URL }} -b ${{ env.ECP_REPO_BRANCH }} ECP
 
       - name: Export Customized ISO
         shell: pwsh
