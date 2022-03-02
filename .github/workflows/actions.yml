@@ -1,4 +1,4 @@
-name: ESXiCustomizerPS-Action
+name: ESXiCustomizerPS_Action
 
 on:
   push:
