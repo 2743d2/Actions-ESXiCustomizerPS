@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout
-      - uses: actions/checkout@main
+        uses: actions/checkout@main
 
       - name: Install and Config VMware.PowerCLI
         shell: pwsh
