@@ -28,8 +28,12 @@ jobs:
       - name: Config VMware.PowerCLI
         shell: pwsh
         run: |
-          $ConfigFile = "${{ github.workspace }}\config.ps1"
+          $ConfigFile = "${{ github.workspace }}/config.ps1"
           powershell.exe -ExecutionPolicy Bypass $ConfigFile
+          Get-ExecutionPolicy -List
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module -Name VMware.PowerCLI -Scope CurrentUser
+          Get-ExecutionPolicy -List
           Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 
       - name: Clone ECP Source Code
@@ -43,7 +47,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           cd ECP
-          $PSfile = "${{ github.workspace }}\Script.ps1"
+          $PSfile = "${{ github.workspace }}/Script.ps1"
           $PSfile
           echo "::set-output name=status::success"
 
