@@ -26,6 +26,7 @@ jobs:
         shell: pwsh
         run: |
           Set-ExecutionPolicy Unrestricted -force
+          Get-ExecutionPolicy -List
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module -Name VMware.PowerCLI
           Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
