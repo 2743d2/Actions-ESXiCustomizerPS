@@ -1,0 +1,30 @@
+name: TEST
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+env:
+  ECP_REPO_URL: https://github.com/VFrontDe/ESXi-Customizer-PS
+  ECP_REPO_BRANCH: master
+
+jobs:
+  build:
+    name: "TEST"
+    runs-on: windows-latest
+  
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.0.0
+      
+      - name: Test1
+          echo ${{ github.workspace }}
+          echo $GITHUB_WORKSPACE
+          cd ${{ github.workspace }}
+          ls
+          $PSfile = "${{ github.workspace }}\Script.ps1"
+          echo $PSfile

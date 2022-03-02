@@ -18,8 +18,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-
-      - uses: actions/checkout@main
+      
+      - name: Checkout
+        uses: actions/checkout@v3.0.0
 
       - name: Config VMware.PowerCLI
         shell: pwsh
