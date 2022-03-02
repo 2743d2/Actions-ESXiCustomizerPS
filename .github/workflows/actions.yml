@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    name: "Gen ESXi-installer Customized"
+    # name: "Gen ESXi-installer Customized"
     runs-on: windows-latest
 
     steps:
@@ -30,6 +30,7 @@ jobs:
           Set-PowerCLIConfiguration -Scope AllUsers -ParticipateInCeip $false -InvalidCertificateAction Ignore
 
       - name: Clone ECP Source Code
+        shell: pwsh
         run: |
           cd ${{ github.workspace }}
           git clone $ECP_REPO_URL -b $ECP_REPO_BRANCH ECP
@@ -45,6 +46,7 @@ jobs:
       - name: Organize Files
         id: organize
         if: (!cancelled())
+        shell: pwsh
         run: |
           cd ${{ github.workspace }}
           cd ECP
@@ -64,6 +66,7 @@ jobs:
       - name: Generate Release Tag
         id: tag
         if: (!cancelled())
+        shell: pwsh
         run: |
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
           touch release.txt
@@ -78,8 +81,3 @@ jobs:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body_path: release.txt
           files: ${{ env.ISO_FILE }}\*
-
-
-
-
-
