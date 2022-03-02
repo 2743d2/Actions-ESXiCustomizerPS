@@ -19,8 +19,7 @@ jobs:
 
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@main
+        - uses: actions/checkout@main
 
       - name: Config VMware.PowerCLI
         shell: pwsh
@@ -53,7 +52,6 @@ jobs:
 
       - name: Organize Files
         id: organize
-        uses: actions/checkout@main
         if: steps.export.outputs.status == 'success' && !cancelled()
         shell: pwsh
         run: |
