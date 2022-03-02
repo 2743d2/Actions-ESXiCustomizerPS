@@ -27,8 +27,8 @@ jobs:
           cd ${{ github.workspace }}
           git clone ${{ env.ECP_REPO_URL }} -b ${{ env.ECP_REPO_BRANCH }} ECP
           ls
-          $PSfile = "${{ github.workspace }}\test.ps1"
+          $PSfile = "& ${{ github.workspace }}\test.ps1"
           echo $PSfile
-          $PSfile
+          iex $PSfile
           cd ECP
           ls
