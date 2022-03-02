@@ -18,11 +18,12 @@ jobs:
     runs-on: windows-2019
 
     steps:
-      
-      - run: choco install vmware-powercli-psmodule
 
       - name: Checkout
         uses: actions/checkout@main
+
+      - shell: pwsh
+        run: choco install vmware-powercli-psmodule
 
       - name: Config VMware.PowerCLI
         shell: pwsh
