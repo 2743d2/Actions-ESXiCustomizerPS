@@ -47,8 +47,8 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           cd ECP
-          $PSfile = "${{ github.workspace }}\Script.ps1"
-          $PSfile
+          $PSfile = "& ${{ github.workspace }}\Script.ps1"
+          iex $PSfile
           echo "::set-output name=status::success"
 
       - name: Organize Files
