@@ -1,1 +1,1 @@
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope AllUsers
+Set-ExecutionPolicy -ExecutionPolicy Bypass
