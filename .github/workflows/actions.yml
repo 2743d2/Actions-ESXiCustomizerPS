@@ -28,6 +28,7 @@ jobs:
           powershell.exe -ExecutionPolicy Bypass $ConfigFile
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module VMware.PowerCLI -Scope AllUsers
+          Get-ExecutionPolicy -List
           Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 
       - name: Clone ECP Source Code
