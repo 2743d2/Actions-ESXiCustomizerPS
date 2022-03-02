@@ -24,9 +24,11 @@ jobs:
       - name: Test1
         shell: pwsh
         run: |
-          echo ${{ github.workspace }}
-          echo $GITHUB_WORKSPACE
           cd ${{ github.workspace }}
+          git clone ${{ env.ECP_REPO_URL }} -b ${{ env.ECP_REPO_BRANCH }} ECP
           ls
-          $PSfile = "${{ github.workspace }}\Script.ps1"
+          $PSfile = "${{ github.workspace }}\test.ps1"
           echo $PSfile
+          $PSfile
+          cd ECP
+          ls
