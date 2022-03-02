@@ -26,8 +26,8 @@ jobs:
         run: |
           Set-ExecutionPolicy RemoteSigned
           Set-PSRepository PSGallery -InstallationPolicy Trusted
-          Install-Module VMware.PowerCLI
-          Set-PowerCLIConfiguration -Scope AllUsers -ParticipateInCeip $false -InvalidCertificateAction Ignore
+          Install-Module VMware.PowerCLI -Scope AllUsers
+          Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 
       - name: Clone ECP Source Code
         shell: pwsh
@@ -65,7 +65,7 @@ jobs:
 
       - name: Generate Release Tag
         id: tag
-        if: (!cancelled())
+        if: steps.tag.outputs.status == 'success' && !cancelled()
         shell: pwsh
         run: |
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
