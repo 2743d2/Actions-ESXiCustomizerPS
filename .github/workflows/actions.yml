@@ -29,9 +29,8 @@ jobs:
           Get-ExecutionPolicy -List
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module -Name VMware.PowerCLI
-          Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 
-
+        # Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
         # $ConfigFile = "${{ github.workspace }}/config.ps1"
         # powershell.exe -ExecutionPolicy Bypass $ConfigFile
 
