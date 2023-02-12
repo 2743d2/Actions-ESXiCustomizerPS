@@ -33,12 +33,17 @@ jobs:
           Set-ExecutionPolicy Unrestricted -force
           Get-ExecutionPolicy -List
           Set-PSRepository PSGallery -InstallationPolicy Trusted
-          Install-Module -Name VMware.PowerCLI
+        # Install-Module -Name VMware.PowerCLI
 
         # Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
         # $ConfigFile = "${{ github.workspace }}/config.ps1"
         # powershell.exe -ExecutionPolicy Bypass $ConfigFile
 
+      - name: Install and cache PowerShell modules
+        uses: potatoqualitee/psmodulecache@v5.2
+        with:
+          modules-to-cache: VMware.PowerCLI
+          updatable: true
 
       - name: Clone ECP Source Code
         shell: pwsh
