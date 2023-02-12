@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 env:
-  ECP_REPO_URL: https://github.com/VFrontDe/ESXi-Customizer-PS
-  ECP_REPO_BRANCH: master
+  ECP_REPO_URL: https://github.com/2743d2/ESXi-Customizer-PS
+  ECP_REPO_BRANCH: main
 
 jobs:
   build:
