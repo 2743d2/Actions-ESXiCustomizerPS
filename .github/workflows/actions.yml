@@ -10,7 +10,7 @@ on:
 
 env:
   ECP_REPO_URL: https://github.com/2743d2/ESXi-Customizer-PS
-  ECP_REPO_BRANCH: main
+  ECP_REPO_BRANCH: master
 
 jobs:
   build:
