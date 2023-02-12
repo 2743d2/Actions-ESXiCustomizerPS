@@ -58,6 +58,7 @@ jobs:
           cd ECP
           $PSfile = "& ${{ github.workspace }}\Script.ps1"
           iex $PSfile
+          Get-ChildItem -Force
           echo "::set-output name=status::success"
 
       - name: Organize Files
